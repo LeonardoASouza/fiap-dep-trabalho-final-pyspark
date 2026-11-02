@@ -1,0 +1,30 @@
+# Dados (baixados pelo script scripts/download-datasets.sh)
+data/input/
+data/output/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# Testes e ferramentas
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+
+# Spark
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Sistema operacional / editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

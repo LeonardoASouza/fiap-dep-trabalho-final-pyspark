@@ -1,0 +1,51 @@
+# =============================================================================
+# Configuracao centralizada da aplicacao
+# -----------------------------------------------------------------------------
+# Nenhum caminho, parametro de leitura/escrita ou regra de negocio fica
+# "hardcoded" no codigo: tudo e lido deste arquivo pela classe AppConfig.
+#
+# Os caminhos sao RELATIVOS a raiz do projeto, o que mantem o projeto
+# agnostico a plataforma (Linux, Windows, macOS, EMR, Databricks, etc.).
+# Para apontar para outro ambiente (ex.: s3://, hdfs://, dbfs:/), basta
+# informar um caminho absoluto/URI aqui - o codigo nao muda.
+# =============================================================================
+
+spark:
+  app_name: "Relatorio de Pedidos Recusados e Legitimos"
+  # master vazio => respeita o que vier do spark-submit (cluster, yarn, k8s...)
+  master: "local[*]"
+  log_level: "WARN"
+  configs:
+    spark.sql.session.timeZone: "UTC"
+    spark.sql.shuffle.partitions: "8"
+    spark.ui.enabled: "false"
+
+paths:
+  pedidos: "data/input/pedidos"
+  pagamentos: "data/input/pagamentos"
+  output: "data/output/relatorio_pedidos_recusados_legitimos"
+
+file_options:
+  pedidos_csv:
+    compression: "gzip"
+    header: true
+    sep: ";"
+  pagamentos_json:
+    compression: "gzip"
+    # O dataset grava o timestamp com 6 casas decimais (microssegundos).
+    timestamp_format: "yyyy-MM-dd'T'HH:mm:ss[.SSSSSS][.SSS]"
+
+output_options:
+  mode: "overwrite"
+  compression: "snappy"
+  # Grava em um unico arquivo para que a ordenacao global exigida pelo
+  # escopo de negocio seja preservada na leitura do parquet.
+  coalesce: 1
+
+business_rules:
+  # Ano de referencia do relatorio exigido pela alta gestao.
+  ano_referencia: 2025
+  # Pagamento recusado.
+  status_pagamento: false
+  # Avaliacao de fraude concluiu que o pagamento e legitimo.
+  fraude: false
