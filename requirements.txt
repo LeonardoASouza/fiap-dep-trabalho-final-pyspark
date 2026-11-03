@@ -1,5 +1,5 @@
 # Dependencias de execucao
-pyspark==4.0.1
+pyspark==4.2.1
 PyYAML==6.0.3
 
 # Dependencias de desenvolvimento, testes e empacotamento

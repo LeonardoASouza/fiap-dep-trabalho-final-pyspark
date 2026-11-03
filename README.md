@@ -105,10 +105,8 @@ trabalho-final-pyspark/
 | Item   | Versão              |
 |--------|---------------------|
 | Python | 3.10 ou superior    |
-| Java   | 17 ou superior (exigido pelo Spark 4.x) |
+| Java   | **17 ou superior** (exigido pelo Spark 4.x) |
 | Git    | qualquer versão recente |
-
-Verifique com:
 
 ```bash
 python3 --version
@@ -119,45 +117,83 @@ java -version
 
 ## 4. Instalação
 
-### 4.1. Clonar o repositório
+O projeto roda em qualquer um dos três ambientes abaixo. Escolha **um**.
+
+### Opção A — GitHub Codespaces (recomendada)
+
+O repositório traz um **dev container** (`.devcontainer/`) com Python 3.11 e
+Java 17 já configurados. Nada precisa ser instalado na máquina local.
+
+1. No GitHub, abra o repositório → botão **Code** → aba **Codespaces** →
+   **Create codespace on main**.
+2. Aguarde a construção do container. O `postCreateCommand` executa
+   automaticamente `.devcontainer/setup.sh`, que instala as dependências,
+   instala o pacote em modo editável e baixa os datasets.
+3. Quando o terminal exibir `>> Ambiente pronto.`, siga para a seção 5.
+
+Se preferir rodar o dev container localmente: VS Code + extensão
+**Dev Containers** → *Reopen in Container*.
+
+### Opção B — AWS Academy Learner Lab (EC2 / terminal do laboratório)
+
+1. Inicie o laboratório (**Start Lab**) e aguarde o indicador **AWS** ficar
+   verde.
+2. No terminal do laboratório (ou via SSH em uma instância EC2 Ubuntu):
 
 ```bash
+sudo apt-get update -y
+sudo apt-get install -y openjdk-17-jdk python3-venv git
+java -version
+
 git clone https://github.com/<SEU-USUARIO>/<SEU-REPOSITORIO>.git
 cd <SEU-REPOSITORIO>
-```
 
-### 4.2. Criar o ambiente virtual e instalar as dependências
-
-**Linux / macOS**
-
-```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 pip install -e .
+
+bash scripts/download-datasets.sh
 ```
 
-**Windows (PowerShell)**
+> O laboratório expira em 4 horas e tem orçamento limitado; encerre com
+> **End Lab** ao terminar.
+
+### Opção C — Máquina local
+
+**Linux / macOS**
+
+```bash
+git clone https://github.com/<SEU-USUARIO>/<SEU-REPOSITORIO>.git
+cd <SEU-REPOSITORIO>
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+pip install -e .
+bash scripts/download-datasets.sh
+```
+
+**Windows (PowerShell)** — requer JDK 17 instalado (ex.: Temurin 17):
 
 ```powershell
+git clone https://github.com/<SEU-USUARIO>/<SEU-REPOSITORIO>.git
+cd <SEU-REPOSITORIO>
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install --upgrade pip
 pip install -r requirements.txt
 pip install -e .
+bash scripts/download-datasets.sh    # Git Bash ou WSL
 ```
 
 > `pip install -e .` instala o pacote `pedidos_recusados` em modo editável,
 > deixando-o importável a partir de qualquer diretório.
 
-### 4.3. Baixar os datasets
+### Datasets
 
-```bash
-bash scripts/download-datasets.sh
-```
-
-O script clona os repositórios oficiais e popula:
+O script `scripts/download-datasets.sh` clona os repositórios oficiais e popula:
 
 - `data/input/pedidos`    — `pedidos-YYYY-MM.csv.gz`  (CSV, separador `;`, gzip)
 - `data/input/pagamentos` — `pagamentos-YYYY-MM.json.gz` (JSON lines, gzip)
@@ -167,7 +203,7 @@ O script clona os repositórios oficiais e popula:
 ```bash
 git clone --depth 1 https://github.com/infobarbosa/datasets-csv-pedidos.git
 git clone --depth 1 https://github.com/infobarbosa/dataset-json-pagamentos.git
-# copie datasets-csv-pedidos/data/pedidos      -> data/input/pedidos
+# copie datasets-csv-pedidos/data/pedidos       -> data/input/pedidos
 # copie dataset-json-pagamentos/data/pagamentos -> data/input/pagamentos
 ```
 
