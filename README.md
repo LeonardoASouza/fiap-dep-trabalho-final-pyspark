@@ -351,6 +351,12 @@ Material de apoio da disciplina: https://github.com/infobarbosa/pyspark-poo
 
 ## 11. Autores
 
+MBA FIAP — Data Engineering Programming — Prof. Marcelo Barbosa Pinto
+
 | Nome | RM |
 |------|----|
-| Leonardo Souza | RM______ |
+| Arthur Oliveira Araújo | 373229 |
+| Helen Jerônimo Martins | 373091 |
+| Joyce Paduan de Souza Maciel | 374583 |
+| Julio Mateus Costa da Silva | 376632 |
+| Leonardo de Almeida Souza | 374284 |
