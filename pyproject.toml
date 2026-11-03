@@ -10,7 +10,11 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [
-  { name = "Leonardo Souza" },
+  { name = "Arthur Oliveira Araujo" },
+  { name = "Helen Jeronimo Martins" },
+  { name = "Joyce Paduan de Souza Maciel" },
+  { name = "Julio Mateus Costa da Silva" },
+  { name = "Leonardo de Almeida Souza" },
 ]
 classifiers = [
   "Programming Language :: Python :: 3",
