@@ -359,5 +359,5 @@ MBA FIAP — Data Engineering Programming — Prof. Marcelo Barbosa Pinto
 | Arthur Oliveira Araújo | 373229 |
 | Helen Jerônimo Martins | 373091 |
 | Joyce Paduan de Souza Maciel | 374583 |
-| Julio Mateus Costa da Silva | 376632 |
+| Julio Mateus Costa da Silva | 373632 |
 | Leonardo de Almeida Souza | 374284 |
