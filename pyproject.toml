@@ -8,7 +8,6 @@ version = "1.0.0"
 description = "Relatorio de pedidos de venda com pagamento recusado e avaliacao de fraude legitima (PySpark + POO + Injecao de Dependencias)."
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "MIT" }
 authors = [
   { name = "Arthur Oliveira Araujo" },
   { name = "Helen Jeronimo Martins" },

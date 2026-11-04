@@ -10,7 +10,8 @@ from pedidos_recusados.config.settings import AppConfig, ConfigError
 
 pytestmark = pytest.mark.unit
 
-YAML_VALIDO = textwrap.dedent("""
+YAML_VALIDO = textwrap.dedent(
+    """
     spark:
       app_name: "App de Teste"
       master: "local[1]"
@@ -35,7 +36,8 @@ YAML_VALIDO = textwrap.dedent("""
       ano_referencia: 2025
       status_pagamento: false
       fraude: false
-    """)
+    """
+)
 
 
 @pytest.fixture
