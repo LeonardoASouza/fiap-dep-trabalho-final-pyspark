@@ -95,6 +95,7 @@ trabalho-final-pyspark/
 │   └── integration/
 ├── pyproject.toml
 ├── requirements.txt
+├── MANIFEST.in
 └── README.md
 ```
 

@@ -1,0 +1,8 @@
+include README.md
+include LICENSE
+include requirements.txt
+include config/settings.yaml
+include config/log4j2.properties
+recursive-include src *.py
+recursive-include tests *.py
+recursive-include scripts *.sh
